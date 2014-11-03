@@ -13,6 +13,9 @@
 		5E6418B01A080A99006FE9C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E6418AF1A080A99006FE9C8 /* Images.xcassets */; };
 		5E6418B31A080A99006FE9C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E6418B11A080A99006FE9C8 /* LaunchScreen.xib */; };
 		5E6418BF1A080A99006FE9C8 /* RayTracerExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6418BE1A080A99006FE9C8 /* RayTracerExampleTests.swift */; };
+		5E6418C91A080C89006FE9C8 /* RayTracerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6418C81A080C89006FE9C8 /* RayTracerView.swift */; };
+		5E6418CB1A08110E006FE9C8 /* TargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6418CA1A08110E006FE9C8 /* TargetView.swift */; };
+		5E6418CF1A081814006FE9C8 /* ObjCTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6418CE1A081814006FE9C8 /* ObjCTargetView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,11 @@
 		5E6418B81A080A99006FE9C8 /* RayTracerExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RayTracerExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E6418BD1A080A99006FE9C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E6418BE1A080A99006FE9C8 /* RayTracerExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RayTracerExampleTests.swift; sourceTree = "<group>"; };
+		5E6418C81A080C89006FE9C8 /* RayTracerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RayTracerView.swift; sourceTree = "<group>"; };
+		5E6418CA1A08110E006FE9C8 /* TargetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetView.swift; sourceTree = "<group>"; };
+		5E6418CC1A081814006FE9C8 /* RayTracerExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RayTracerExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		5E6418CD1A081814006FE9C8 /* ObjCTargetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCTargetView.h; sourceTree = "<group>"; };
+		5E6418CE1A081814006FE9C8 /* ObjCTargetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjCTargetView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +67,12 @@
 		5E64189A1A080A99006FE9C8 = {
 			isa = PBXGroup;
 			children = (
+				5E6418CD1A081814006FE9C8 /* ObjCTargetView.h */,
+				5E6418CE1A081814006FE9C8 /* ObjCTargetView.m */,
 				5E6418A51A080A99006FE9C8 /* RayTracerExample */,
 				5E6418BB1A080A99006FE9C8 /* RayTracerExampleTests */,
 				5E6418A41A080A99006FE9C8 /* Products */,
+				5E6418CC1A081814006FE9C8 /* RayTracerExample-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +94,8 @@
 				5E6418AF1A080A99006FE9C8 /* Images.xcassets */,
 				5E6418B11A080A99006FE9C8 /* LaunchScreen.xib */,
 				5E6418A61A080A99006FE9C8 /* Supporting Files */,
+				5E6418C81A080C89006FE9C8 /* RayTracerView.swift */,
+				5E6418CA1A08110E006FE9C8 /* TargetView.swift */,
 			);
 			path = RayTracerExample;
 			sourceTree = "<group>";
@@ -212,6 +225,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E6418C91A080C89006FE9C8 /* RayTracerView.swift in Sources */,
+				5E6418CB1A08110E006FE9C8 /* TargetView.swift in Sources */,
+				5E6418CF1A081814006FE9C8 /* ObjCTargetView.m in Sources */,
 				5E6418AB1A080A99006FE9C8 /* ViewController.swift in Sources */,
 				5E6418A91A080A99006FE9C8 /* AppDelegate.swift in Sources */,
 			);
@@ -336,9 +352,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RayTracerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RayTracerExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -346,9 +365,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RayTracerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RayTracerExample-Bridging-Header.h";
 			};
 			name = Release;
 		};
