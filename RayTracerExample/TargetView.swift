@@ -9,29 +9,39 @@
 import UIKit
 
 class TargetView: UIView {
-  /*
-  var ctx : CGContextRef?
 
-  func hitAt(point: CGPoint) -> Bool {
-    var pointer = UnsafeMutablePointer<Void>.alloc(4)
+  func colorAt(point: CGPoint) -> UIColor {
+    var pixel = [CUnsignedChar](count: 4, repeatedValue: 0)
+    
     let colorSpace = CGColorSpaceCreateDeviceRGB()
-    let context = CGBitmapContextCreate(&pointer,
-      1, 1, 8, 4, colorSpace, CGImageAlphaInfo.Last as CGBitmapInfo);
+    
+    var context = CGBitmapContextCreate(&pixel,
+      1, 1, 8, 4, colorSpace, CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue));
     
     CGContextTranslateCTM(context, -point.x, -point.y);
     
     self.layer.renderInContext(context)
     
-    CGContextRelease(context);
-    CGColorSpaceRelease(colorSpace);
-    UIColor *color = [UIColor colorWithRed:pixel[0]/255.0
-      green:pixel[1]/255.0 blue:pixel[2]/255.0
-      alpha:pixel[3]/255.0];
-    return color;
+    var red = CGFloat(Double(pixel[0]) / 255.0)
+    var green = CGFloat(Double(pixel[1]) / 255.0)
+    var blue = CGFloat(Double(pixel[2]) / 255.0)
+    var alpha = CGFloat(Double(pixel[3]) / 255.0)
+    
+    return UIColor(red: red, green: green, blue: blue, alpha: alpha)
   }
   
   override func drawRect(rect: CGRect) {
-    ctx = UIGraphicsGetCurrentContext()
+    let ctx = UIGraphicsGetCurrentContext()
+    CGContextSetRGBFillColor(ctx, 0.0, 0.0, 1.0, 1.0)
+    CGContextFillEllipseInRect(ctx, CGRectMake(100, 100, 100, 100))
+    
+    CGContextSetRGBFillColor(ctx, 1.0, 1.0, 0.0, 1.0)
+    CGContextBeginPath(ctx)
+    CGContextMoveToPoint(ctx, 150, 150)
+    CGContextAddLineToPoint(ctx, 250, 100)
+    CGContextAddLineToPoint(ctx, 250, 200)
+    CGContextAddLineToPoint(ctx, 150, 150)
+    CGContextClosePath(ctx)
+    CGContextFillPath(ctx)
   }
-  */
 }
